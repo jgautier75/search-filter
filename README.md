@@ -1,6 +1,8 @@
 # search-filter
 
-Microsto REST API filter implementation test using ANTLR4
+[Microsoft REST API](https://github.com/microsoft/api-guidelines/blob/vNext/azure/Guidelines.md) filter implementation in JAVA using [ANTLR4](https://github.com/antlr/antlr4/blob/master/doc/getting-started.md)
+
+
 
 | Operator  | Description  | Example  |
 |---|---|---|
@@ -16,3 +18,12 @@ Microsto REST API filter implementation test using ANTLR4
 | not  | Logical negation | not price lt 200 |
 | ()  | Grouping | ( fruit eq 'APPLE' or fruit eq 'BANANA')  |
 
+ANTLR definition: src/main/antlr4/com/acme/jga/filtering/antlr/Filter.g4
+
+Generate POJO from ANTLR using the followin command:
+
+```sh
+mvn antlr4:antlr4
+```
+
+Tests: src/test/java/com/acme/jga/filtering/BasicTest
