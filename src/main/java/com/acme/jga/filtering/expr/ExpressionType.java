@@ -16,6 +16,10 @@ public enum ExpressionType {
      */
     OPERATOR,
     /**
+     * Negation (NOT).
+     */
+    NEGATION,
+    /**
      * Opening parenthesis.
      */
     OPENING_PARENTHESIS,

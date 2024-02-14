@@ -14,7 +14,6 @@ import com.acme.jga.filtering.antlr.FilterParser.FilterContext;
 import com.acme.jga.filtering.expr.Expression;
 import com.acme.jga.filtering.expr.ExpressionType;
 
-
 public class SearchFilterListener implements FilterListener {
     private Vocabulary vocabulary;
     private List<Expression> expressions;
@@ -26,11 +25,11 @@ public class SearchFilterListener implements FilterListener {
         this.errors = new ArrayList<>();
     }
 
-    public List<Expression> getExpressions(){
+    public List<Expression> getExpressions() {
         return this.expressions;
     }
 
-    public List<ErrorNode> getErrors(){
+    public List<ErrorNode> getErrors() {
         return this.errors;
     }
 
@@ -59,6 +58,9 @@ public class SearchFilterListener implements FilterListener {
                 break;
             case "CPAR":
                 expressions.add(new Expression(ExpressionType.CLOSING_PARENTEHSIS, node.getText()));
+                break;
+            case "NOT":
+                expressions.add(new Expression(ExpressionType.NEGATION, node.getText()));
                 break;
             default:
                 break;
