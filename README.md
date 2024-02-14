@@ -20,7 +20,7 @@
 
 ANTLR definition: src/main/antlr4/com/acme/jga/filtering/antlr/Filter.g4
 
-Generate POJO from ANTLR using the followin command:
+Generate POJO from ANTLR using the following command:
 
 ```sh
 mvn antlr4:antlr4
