@@ -33,7 +33,6 @@ class BasicTest {
                                 "Tuple 2 of type " + ExpressionType.VALUE.name());
                 assertEquals("'GAUTIER'", parsingResult.getExpressions().get(2).getValue(),
                                 "Tuple 2 with value 'GAUTIER'");
-
         }
 
         @Test
@@ -82,7 +81,6 @@ class BasicTest {
 
                 assertEquals(ExpressionType.CLOSING_PARENTEHSIS, parsingResult.getExpressions().get(8).getType(),
                                 "Tuple 8 of type " + ExpressionType.CLOSING_PARENTEHSIS.name());
-
         }
 
         @Test
@@ -126,6 +124,15 @@ class BasicTest {
                 QueryParser queryParser = new QueryParser();
                 ParsingResult parsingResult = queryParser.parseQuery(query);
 
+                assertTrue(parsingResult.getErrorNodes().isEmpty());
+        }
+
+        @Test
+        void invalidParenthesisTest(){
+                String query = "(name lk 'GAU%TIER'";
+                QueryParser queryParser = new QueryParser();
+                ParsingResult parsingResult = queryParser.parseQuery(query);
+                // Generated error:  "<missing ')'>"
                 assertTrue(parsingResult.getErrorNodes().isEmpty());
         }
 
