@@ -120,4 +120,13 @@ class BasicTest {
                 assertFalse(parsingResult.getErrorNodes().isEmpty());
         }
 
+        @Test
+        void likeTest() {
+                String query = "name lk 'GAU%TIER'";
+                QueryParser queryParser = new QueryParser();
+                ParsingResult parsingResult = queryParser.parseQuery(query);
+
+                assertTrue(parsingResult.getErrorNodes().isEmpty());
+        }
+
 }
