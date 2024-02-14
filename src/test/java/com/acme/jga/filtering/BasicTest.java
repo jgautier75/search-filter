@@ -133,7 +133,8 @@ class BasicTest {
                 QueryParser queryParser = new QueryParser();
                 ParsingResult parsingResult = queryParser.parseQuery(query);
                 // Generated error:  "<missing ')'>"
-                assertTrue(parsingResult.getErrorNodes().isEmpty());
+                assertFalse(parsingResult.getErrorNodes().isEmpty());
+                assertEquals("<missing ')'>", parsingResult.getErrorNodes().get(0).getText());
         }
 
 }
