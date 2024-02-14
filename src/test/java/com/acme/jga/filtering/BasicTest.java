@@ -2,6 +2,7 @@ package com.acme.jga.filtering;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertFalse;
 
 import org.junit.jupiter.api.Test;
 
@@ -108,6 +109,15 @@ class BasicTest {
                 assertEquals(ExpressionType.VALUE, parsingResult.getExpressions().get(3).getType(),
                                 "Tuple 3 of type " + ExpressionType.VALUE.name());
                 assertEquals("'apple'", parsingResult.getExpressions().get(3).getValue(), "Tuple 3 with value 'apple'");
+        }
+
+        @Test
+        void notAllowedCharTest() {
+                String query = "b@lance eq 1.4";
+                QueryParser queryParser = new QueryParser();
+                ParsingResult parsingResult = queryParser.parseQuery(query);
+
+                assertFalse(parsingResult.getErrorNodes().isEmpty());
         }
 
 }
