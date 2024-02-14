@@ -128,13 +128,22 @@ class BasicTest {
         }
 
         @Test
-        void invalidParenthesisTest(){
+        void invalidParenthesisTest() {
                 String query = "(name lk 'GAU%TIER'";
                 QueryParser queryParser = new QueryParser();
                 ParsingResult parsingResult = queryParser.parseQuery(query);
-                // Generated error:  "<missing ')'>"
+                // Generated error: "<missing ')'>"
                 assertFalse(parsingResult.getErrorNodes().isEmpty());
                 assertEquals("<missing ')'>", parsingResult.getErrorNodes().get(0).getText());
+        }
+
+        @Test
+        void invalidComparison() {
+                String query = "name na 'GAUTIER'";
+                QueryParser queryParser = new QueryParser();
+                ParsingResult parsingResult = queryParser.parseQuery(query);
+                assertFalse(parsingResult.getErrorNodes().isEmpty());
+                assertEquals("<missing COMPARISON>", parsingResult.getErrorNodes().get(0).getText());
         }
 
 }
